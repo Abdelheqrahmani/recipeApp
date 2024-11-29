@@ -5,8 +5,9 @@ import Search from "./components/Search";
 import styled from 'styled-components'
 import { Link } from "react-router-dom";
 import { GiKnifeFork } from "react-icons/gi";
+import { useEffect } from "react";
 function App() {
-
+ 
   return (
     
     <div className="App">
@@ -28,6 +29,7 @@ text-decoration: none;
 font-size : 1.5rem  ;
 font-weight:400;
 font-family : Lobster Two , cursive;
+
 
 `
 const Nav = styled.div`
