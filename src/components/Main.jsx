@@ -5,7 +5,7 @@ import { GiKnifeFork } from "react-icons/gi";
 import Search from "./Search";
 function Main() {
   return (
-    <div className="Link b  flex flex-col items-center justify-start   w-[100%] h-lvh  gap-1 size-max bg-[url('https://img.freepik.com/photos-gratuite/repas-thanksgiving-espace-copie_23-2149100112.jpg?t=st=1740599647~exp=1740603247~hmac=93a716c0b669485c9c233cb3d1fc2717756c714de800fff50269b6cd059ab35c&w=1800')]">
+    <div className="Link b  flex flex-col items-center justify-start   w-[100%] h-lvh  gap-1 size-max bg-[url('https://img.freepik.com/photos-gratuite/repas-thanksgiving-espace-copie_23-2149100112.jpg?t=st=1740599647~exp=1740603247~hmac=93a716c0b669485c9c233cb3d1fc2717756c714de800fff50269b6cd059ab35c&w=1800')] bg-cover">
       <Link
         className="flex flex-row items-center justify-center gap-1 w-full h-auto bg-amber-50 text-white"
         to="/"
