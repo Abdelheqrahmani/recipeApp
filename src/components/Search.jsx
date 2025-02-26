@@ -15,12 +15,17 @@ function Search() {
 
 
   return (
-    <FormStyle onSubmit={submitHandler}>
-        <div>
-           <FaSearch></FaSearch>
-        <input onChange={(e) =>setInput(e.target.value)} type="text" value={input}/> 
-         </div>
-    </FormStyle>
+    <div onSubmit={submitHandler} className=" mx-auto mt-1 w-[60%]">
+      <div className="relative flex items-center justify-center w-full">
+        <FaSearch className="absolute top-[50%] left-4 -translate-y-1/2 text-white" />
+        <input
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          className="w-[100%] border-none rounded-xl bg-gradient-to-br from-[#494949] to-[#313131] text-white text-xl px-12 py-4 outline-none"
+        />
+      </div>
+    </div>
   )
 }
 

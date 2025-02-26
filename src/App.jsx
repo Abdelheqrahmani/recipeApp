@@ -12,11 +12,10 @@ function App() {
   return (
     <div
       className="App">
-      <Router>
-        <Main />
-          
-
         
+      <Router>
+       
+         <Main />
         <Category />
         <Pages />
       </Router>
