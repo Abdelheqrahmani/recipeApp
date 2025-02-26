@@ -11,10 +11,10 @@ function Main() {
         to="/"
       >
         <div className=" text-4xl flex flex-row mt-3 ">
-          Recipe<p className="animate-bounce mt-1 text-orange-400 ">Z</p> 
+          Recipe<p className="animate-bounce mt-1 text-orange-400 ">Z</p>
         </div>
         <GiKnifeFork className="text-orange-400 animate-bounce text-3xl mt-3" />
-        </Link>
+      </Link>
 
       <div className="container flex flex-row items-center justify-between gap-1">
         <div className="left w-full h-lvh mt-2xl flex flex-col  items-start justify-center">
