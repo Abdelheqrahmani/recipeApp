@@ -5,16 +5,16 @@ import { GiKnifeFork } from "react-icons/gi";
 import Search from "./Search";
 function Main() {
   return (
-    <div className="Link flex flex-col items-center justify-start   w-[100%] h-lvh  gap-1 size-max">
+    <div className="Link  flex flex-col items-center justify-start   w-[100%] h-lvh  gap-1 size-max">
       <Link
         className="flex flex-row items-center justify-center gap-1 w-full h-auto text-white"
         to="/"
       >
-        <div className=" text-4xl flex flex-row mr-3">
-          Recipe<p>Z</p>
+        <div className=" text-4xl flex flex-row mt-3 ">
+          Recipe<p className="animate-bounce mt-1 text-orange-400 ">Z</p> 
         </div>
-        <GiKnifeFork className="text-orange-400" />
-      </Link>
+        <GiKnifeFork className="text-orange-400 animate-bounce text-3xl mt-3" />
+        </Link>
 
       <div className="container flex flex-row items-center justify-between gap-1">
         <div className="left w-full h-lvh mt-2xl flex flex-col  items-start justify-center">
