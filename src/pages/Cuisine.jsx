@@ -34,8 +34,8 @@ function Cuisine() {
             transition={{ duration: 0.5 }}
         >
             {cuisine.map((recipe) => (
-                   <Link to={'/recipe/'+recipe.id}>
-                <Card key={recipe.id}>
+                   <Link to={'/recipe/'+recipe.id} key={recipe.id}>
+                <Card >
                  
                     <img src={recipe.image} alt="" />
                     <h4>{recipe.title}</h4>

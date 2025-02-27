@@ -37,24 +37,23 @@ function Searched() {
     }
 
     return (
-        <Grid>
-            {searchedRecipes.map((recipe) => (
-               <Link to={'/recipe/' + recipe.id }>
-                <Card key={recipe.id}>
+        <div className='grid grid-cols-3 max-sm:grid-cols-1 gap-4'>
+            {searchedRecipes.length === 0 && params.search ? (
+      <div style={{ textAlign: "center", fontSize: "1.5rem", color: "red", marginTop: "20px" }}>
+        No recipes found.
+      </div>
+    ) : searchedRecipes.map((recipe) => (
+               <Link to={'/recipe/' + recipe.id } key={recipe.id} >
+                <Card  className=''>
                     <img src={recipe.image} alt="" />
                     <h4>{recipe.title}</h4>
                 </Card>
                 </Link>
             ))}
-        </Grid>
+        </div>
     );
 }
 
-const Grid = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-`;
 
 const Card = styled.div`
     img {

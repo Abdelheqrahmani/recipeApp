@@ -10,6 +10,7 @@ const Home = () => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
         >
+            
             <Popular />
             <Veggie />
         </motion.div>

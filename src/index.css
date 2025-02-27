@@ -4,7 +4,7 @@
 
 *{
     font-family: 'Montserrat', sans-serif;
-    font-weight: bold;
+    font-weight: 500;
     font-style: capitalize;
 
    
@@ -13,7 +13,7 @@
 
 body{
     margin: 0% 0%;
-    background-color: rgb(255, 255, 255);
+    @apply  bg-amber-50;
 }
 
 h4{

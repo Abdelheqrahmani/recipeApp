@@ -1,71 +1,56 @@
-import { FaPizzaSlice , FaHamburger } from "react-icons/fa";
-import {GiNoodles , GiChopsticks } from "react-icons/gi";
-import styled from "styled-components";
+import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
+import { GiNoodles, GiChopsticks } from "react-icons/gi";
 import { NavLink } from "react-router-dom";
-
-import React from 'react'
+import React from "react";
 
 function Category() {
   return (
-    <List>
-        <Slink to={'/cuisine/italian'}>
-            <FaPizzaSlice/> 
-            <h4>Italian</h4>
-        </Slink >
-        <Slink to={'/cuisine/american'}>
-            <FaHamburger/> 
-            <h4>American</h4>
-        </Slink>
-        <Slink to={'/cuisine/thai'}>
-            <GiNoodles/> 
-            <h4>Thai</h4>
-        </Slink>
-        <Slink to={'/cuisine/japanese'}>
-            <GiChopsticks/> 
-            <h4>Japanese</h4>
-        </Slink>
-    </List>
-  )
+    <div className="flex justify-center my-8">
+      <NavLink
+        to="/cuisine/italian"
+        className={({ isActive }) =>
+          `flex flex-col items-center justify-center w-24 h-24 rounded-full transform scale-90 transition-all duration-300 hover:scale-100 mr-8
+           ${isActive ? "bg-gradient-to-r from-[#f27121] to-[#e94057]" : "bg-gradient-to-br from-[#494949] to-[#313131]"}`
+        }
+      >
+        <FaPizzaSlice className="text-white text-2xl" />
+        <h4 className="text-white text-sm">Italian</h4>
+      </NavLink>
+
+      <NavLink
+        to="/cuisine/american"
+        className={({ isActive }) =>
+          `flex flex-col items-center justify-center w-24 h-24 rounded-full transform scale-90 transition-all duration-300 hover:scale-100 mr-8
+           ${isActive ? "bg-gradient-to-r from-[#f27121] to-[#e94057]" : "bg-gradient-to-br from-[#494949] to-[#313131]"}`
+        }
+      >
+        <FaHamburger className="text-white text-2xl" />
+        <h4 className="text-white text-sm">American</h4>
+      </NavLink>
+
+      <NavLink
+        to="/cuisine/thai"
+        className={({ isActive }) =>
+          `flex flex-col items-center justify-center w-24 h-24 rounded-full transform scale-90 transition-all duration-300 hover:scale-100 mr-8
+           ${isActive ? "bg-gradient-to-r from-[#f27121] to-[#e94057]" : "bg-gradient-to-br from-[#494949] to-[#313131]"}`
+        }
+      >
+        <GiNoodles className="text-white text-2xl" />
+        <h4 className="text-white text-sm">Thai</h4>
+      </NavLink>
+
+      <NavLink
+        to="/cuisine/japanese"
+        className={({ isActive }) =>
+          `flex flex-col items-center justify-center w-24 h-24 rounded-full transform scale-90 transition-all duration-300 hover:scale-100
+           ${isActive ? "bg-gradient-to-r from-[#f27121] to-[#e94057]" : "bg-gradient-to-br from-[#494949] to-[#313131]"}`
+        }
+      >
+        <GiChopsticks className="text-white text-2xl" />
+        <h4 className="text-white text-sm">Japanese</h4>
+      </NavLink>
+    </div>
+  );
 }
 
-const List = styled.div`
-    display: flex;
-    justify-content: center;
-    margin: 2rem 0rem;
-
-`;
-
-const Slink = styled(NavLink)`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    margin-right:2rem ; 
-    background : linear-gradient(35deg, #494949, #313131);
-    width: 6rem;
-    height: 6rem;
-    transform : scale(0.8) ; 
-
-     h4 {
-        color : white ;
-        font-size : 0.8rem;
-         }
-        svg{
-        color : white ; 
-        font-size : 1.5rem;
-        }
-         &.active{
-            background : linear-gradient(to right , #f27121, #e94057);
-            }
-             svg {
-              color: white ; 
-
-             }
-             h4{
-              color : white ; 
-    }
-
-`;
-
-export default Category
+export default Category;
