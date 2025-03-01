@@ -19,12 +19,14 @@ function Search({ onSearch }) {
   return (
     <form onSubmit={submitHandler} className=" mx-auto mt-1 w-[80%]">
       <div className="relative flex items-center justify-center w-full">
-        <FaSearch className="absolute top-[50%] left-4 -translate-y-1/2 text-white" />
+        <FaSearch className="absolute top-[50%] left-4 -translate-y-1/2 text-black" />
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="w-[100%] border-none rounded-xl bg-gradient-to-br from-[#494949] to-[rgb(49,49,49)] text-white text-xl px-12 py-4 outline-none"
+          className="w-[100%] border-none rounded-xl bg-[#FFF5E1]
+        
+           text-black text-xl px-12 py-4 outline-red-1 outline-1"
         />
       </div>
     </form>

@@ -3,10 +3,9 @@
 
 
 *{
-    font-family: 'Montserrat', sans-serif;
+
     font-weight: 500;
     font-style: capitalize;
-
    
 
 }
@@ -18,11 +17,10 @@ body{
 
 h4{
     font-size: 1rem;
-    color: rgb(31, 31, 31);
+
 }
 h3{
     font-size: 1.5rem;
-    color: rgb(31, 31, 31);
     line-height: 2.5rem;
     margin: 2rem 0rem;
 }
@@ -30,5 +28,10 @@ h3{
 
 a{
     text-decoration: none;
-    color: rgb(31, 31, 31);
+    color: black;
 }
+
+
+.outlined-text {
+    -webkit-text-stroke: 1px black;
+  }
