@@ -1,10 +1,9 @@
 import React from "react";
-import { useState ,useEffect , useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaSearch } from "react-icons/fa";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import {motion} from 'framer-motion'
-
+import { motion } from "framer-motion";
 
 function Search({ onSearch }) {
   const [input, setInput] = useState("");
@@ -13,7 +12,6 @@ function Search({ onSearch }) {
     e.preventDefault();
     navigate("searched/" + input);
     onSearch();
- 
   };
 
   return (
@@ -22,6 +20,7 @@ function Search({ onSearch }) {
         <FaSearch className="absolute top-[50%] left-4 -translate-y-1/2 text-black" />
         <input
           type="text"
+          placeholder="Discover new recipes..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="w-[100%] border-none rounded-xl bg-[#FFF5E1]

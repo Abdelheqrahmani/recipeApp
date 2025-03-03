@@ -5,7 +5,7 @@ import React from "react";
 
 function Category() {
   return (
-    <div className="flex justify-center my-8">
+    <div className="flex justify-center bg-red-400">
       <NavLink
         to="/cuisine/italian"
         className={({ isActive }) =>
