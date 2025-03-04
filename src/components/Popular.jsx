@@ -39,7 +39,7 @@ function Popular() {
   return (
     <div>
       <h1>Popular</h1>
-      <Splide 
+      <Splide  
         options={{
           perPage: 4,
           gap: "1.5rem",
@@ -47,7 +47,7 @@ function Popular() {
           arrows: false,
           autoplay: true,
           type: "loop",
-          interval: 3000,
+          interval: 3000, 
           speed: 1500,
           breakpoints: {
             1200: { perPage: 3 },
@@ -59,8 +59,8 @@ function Popular() {
      
         {popular.map((recipe) => (
           <SplideSlide key={recipe.id}>
-            <Link   to={"/recipe/" + recipe.id}>
-              <div className="container w-full  flex flex-col gap-0.5  justify-center 
+            <Link    to={"/recipe/" + recipe.id}>
+              <div className="container my-10 w-full  flex flex-col gap-0.5  justify-center 
                items-start rounded-xl shadow-lg h-full ">
                 <img src={recipe.image} alt={recipe.title} />
                 <p className="w-full 
