@@ -37,81 +37,51 @@ function Popular() {
   };
 
   return (
-    <Wrapper>
+    <div>
       <h1>Popular</h1>
-      <Splide
+      <Splide 
         options={{
           perPage: 4,
-          arrows: false,
+          gap: "1.5rem",
           pagination: false,
-          drag: "free",
-          gap: "1rem",
+          arrows: false,
+          autoplay: true,
+          type: "loop",
+          interval: 3000,
+          speed: 1500,
+          breakpoints: {
+            1200: { perPage: 3 },
+            768: { perPage: 2 },
+            480: { perPage: 1, interval: 2000, speed: 1000 },
+          },
         }}
       >
+     
         {popular.map((recipe) => (
           <SplideSlide key={recipe.id}>
-            <Link to={"/recipe/" + recipe.id}>
-              <Card>
-                <p>{recipe.title}</p>
+            <Link   to={"/recipe/" + recipe.id}>
+              <div className="container w-full  flex flex-col gap-0.5  justify-center 
+               items-start rounded-xl shadow-lg h-full ">
                 <img src={recipe.image} alt={recipe.title} />
-                <Gradient />
-              </Card>
+                <p className="w-full 
+                h-10 text-center"> {recipe.title}</p>
+                <p
+             className="text-gray-700 w-full h-20 overflow-hidden "
+                 dangerouslySetInnerHTML={{
+                __html: recipe.summary.length < 100
+                  ? recipe.summary
+                  : recipe.summary.substring(0, 100) + "..."
+            }}></p>
+            <div className="  w-full flex justify-start h-10 items-center gap-2">
+         <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-400 rounded-lg hover:bg-orange-300 cursor-pointer "> Read More</button>
+             </div> </div>
             </Link>
+          
           </SplideSlide>
         ))}
       </Splide>
-    </Wrapper>
+    </div>
   );
 }
-
-const Wrapper = styled.div`
-  margin: 4rem 0rem;
-`;
-
-const Card = styled.div`
-  min-height: 25rem;
-  border-radius: 2rem;
-  overflow: hidden;
-  text-align: center;
-  position: relative;
-
-  img {
-    border-radius: 2rem;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  p {
-    position: absolute;
-    z-index: 10;
-    left: 50%;
-    bottom: 0;
-    transform: translateX(-50%);
-    color: white;
-    width: 100%;
-    text-align: center;
-    font-weight: bold;
-    font-size: 1rem;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
-
-const Gradient = styled.div`
-  z-index: 3;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0),
-    rgba(0, 0, 0, 0.5)
-  ); /* Stronger gradient */
-`;
 
 export default Popular;
