@@ -10,7 +10,7 @@ import Main from "./components/Main";
 
 function App() {
   return (
-    <div className="App ">
+    <div className=" container mx-auto App ">
       <Router>
         <Main />
         <Category />

@@ -1,12 +1,13 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { GiKnifeFork } from "react-icons/gi";
+import { GiKnifeFork  } from "react-icons/gi";
 import Search from "./Search";
 import Searched from "../pages/Searched";
 
 function Main() {
   const searchedRef = useRef(null);
   const [searched, setSearched] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleSearch = () => {
     setSearched(true);
@@ -16,35 +17,80 @@ function Main() {
   };
 
   return (
-    <div  style={{
-      backgroundImage:
-        "url('https://img.freepik.com/photos-gratuite/repas-thanksgiving-espace-copie_23-2149100112.jpg?t=st=1740599647~exp=1740603247~hmac=93a716c0b669485c9c233cb3d1fc2717756c714de800fff50269b6cd059ab35c&w=1800')",
-    }} className=" w-full ">
-      <div
-        className="flex flex-col items-center justify-start w-full bg-cover bg-center"
-       
-      >
-        <div className=" w-full flex justify-around h-10 bg-amber-50">
-        <Link
-          className="  items-center flex flex-row justify-center h-auto text-white"
-          to="/"
-        >
-          <div className="text-4xl flex ">
-          <p className="animate-bounce mt-1 text-orange-400">Z</p>
-          </div>
-          <GiKnifeFork className="  text-orange-400 animate-bounce text-3xl mt-3" />
+    <div
+      style={{
+        backgroundImage:
+          "url('https://img.freepik.com/photos-gratuite/repas-thanksgiving-espace-copie_23-2149100112.jpg?t=st=1740599647~exp=1740603247~hmac=93a716c0b669485c9c233cb3d1fc2717756c714de800fff50269b6cd059ab35c&w=1800')",
+      }}
+      className="w-full min-h-screen bg-cover bg-center relative"
+    >
+      
+      <div className="w-full flex justify-between items-center h-16 px-6 bg-amber-50 shadow-xl relative z-20">
+      
+        <Link className="flex items-center text-white" to="/">
+          <p className="text-4xl text-orange-400 animate-bounce mt-1">Z</p>
+          <GiKnifeFork className="text-orange-400 animate-bounce text-3xl mt-3" />
         </Link>
-       <div className=" flex flex-row gap-1 justify-center items-center list-none"> 
-        <li>Home</li>
-        <li>Category </li>
-        <li>Popular</li>
-        <li>Veggies </li>
+
+       
+        <ul className="hidden lg:flex gap-6">
+          <li className="hover:text-orange-400 cursor-pointer p-4">Home</li>
+          <li className="hover:text-orange-400 cursor-pointer p-4">Category</li>
+          <li className="hover:text-orange-400 cursor-pointer p-4">Popular</li>
+          <li className="hover:text-orange-400 cursor-pointer p-4">Veggies</li>
+        </ul>
+
         
-       </div>
-        
-        
+        <button
+          className="lg:hidden flex flex-col justify-between h-6 w-6 focus:outline-none"
+          onClick={() => setIsOpen(true)}
+        >
+          <span className="block w-full h-0.5 bg-black"></span>
+          <span className="block w-full h-0.5 bg-black"></span>
+          <span className="block w-full h-0.5 bg-black"></span>
+        </button>
+      </div>
+
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-amber-50/99 flex flex-col items-center justify-center z-30 text-white text-3xl space-y-8"
+          onClick={() => setIsOpen(false)} // Close menu when clicking outside
+        >
+          <button
+            className="absolute top-6 right-6 text-4xl"
+            onClick={() => setIsOpen(false)}
+          >
+            ✖
+          </button>
+          <a
+            className="hover:text-orange-400 cursor-pointer"
+            onClick={() => setIsOpen(false)}
+          >
+            Home
+          </a>
+          <a
+            className="hover:text-orange-400 cursor-pointer"
+            onClick={() => setIsOpen(false)}
+          >
+            Category
+          </a>
+          <a
+            className="hover:text-orange-400 cursor-pointer"
+            onClick={() => setIsOpen(false)}
+          >
+            Popular
+          </a>
+          <a
+            className="hover:text-orange-400 cursor-pointer"
+            onClick={() => setIsOpen(false)}
+          >
+            Veggies
+          </a>
         </div>
-<div className="bg-amber-50/80 w-[80%]">
+      )}
+
+      {/* Hero Section */}
+      <div className="bg-amber-50/80 w-[80%] mx-auto my-0">
         <div className=" container flex  flex-row items-center justify-center gap-1 text-center">
           <div className="left  container w-[80%] h-screen flex flex-col items-center justify-center">
             <h1 className="text-6xl text-black flex items-center justify-center flex-wrap gap-1">
@@ -64,14 +110,13 @@ function Main() {
             <Search onSearch={handleSearch} />
           </div>
         </div>
-
+        {/* Searched Recipes Section */}
         {searched && (
           <div ref={searchedRef}>
             <Searched />
           </div>
         )}
       </div>
-    </div>
     </div>
   );
 }
