@@ -15,7 +15,7 @@ function Searched() {
       const data = await fetch(
         `https://api.spoonacular.com/recipes/complexSearch?apiKey=d051999aa4f04cbf8bda18878c42746f&query=${name}`
       );
-      if (!data.ok) throw new Error('API request failed');
+      if (!data.ok) throw new Error("API request failed");
       const recipes = await data.json();
       setSearchedRecipes(recipes.results || []);
     } catch (error) {

@@ -16,7 +16,7 @@ const Recipe = () => {
       const resp = await fetch(
         `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=d051999aa4f04cbf8bda18878c42746f`
       );
-      if (!resp.ok) throw new Error('Failed to fetch recipe details');
+      if (!resp.ok) throw new Error("Failed to fetch recipe details");
       const data = await resp.json();
       setDetails(data);
     } catch (err) {
@@ -73,7 +73,6 @@ const Recipe = () => {
             <h3 dangerouslySetInnerHTML={{ __html: details.summary }}></h3>
             <h3 dangerouslySetInnerHTML={{ __html: details.instructions }}></h3>
           </div>
-      
         )}
       </Info>
     </Wrapper>
