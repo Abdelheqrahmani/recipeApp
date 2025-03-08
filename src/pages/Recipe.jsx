@@ -4,16 +4,26 @@ import { useParams } from "react-router-dom";
 
 const Recipe = () => {
   const [details, setDetails] = useState({});
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState("instructions");
 
   const params = useParams();
 
   const fetchDetails = async () => {
-    const resp = await fetch(
-      `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=d051999aa4f04cbf8bda18878c42746f`
-    );
-    const data = await resp.json();
-    return data;
+    try {
+      setLoading(true);
+      const resp = await fetch(
+        `https://api.spoonacular.com/recipes/${params.id}/information?apiKey=d051999aa4f04cbf8bda18878c42746f`
+      );
+      if (!resp.ok) throw new Error('Failed to fetch recipe details');
+      const data = await resp.json();
+      setDetails(data);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -26,6 +36,10 @@ const Recipe = () => {
       isMounted = false;
     };
   }, [params.id]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!details.title) return <div>No recipe found</div>;
 
   return (
     <Wrapper>

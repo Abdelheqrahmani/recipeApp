@@ -10,24 +10,19 @@ function Searched() {
   const resultsRef = useRef(null);
 
   const getSearched = async (name) => {
-    const check = localStorage.getItem(name);
-
-    if (check) {
-      setSearchedRecipes(JSON.parse(check));
+    try {
+      setLoading(true);
+      const data = await fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=d051999aa4f04cbf8bda18878c42746f&query=${name}`
+      );
+      if (!data.ok) throw new Error('API request failed');
+      const recipes = await data.json();
+      setSearchedRecipes(recipes.results || []);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setSearchedRecipes([]);
+    } finally {
       setLoading(false);
-    } else {
-      try {
-        const data = await fetch(
-          `https://api.spoonacular.com/recipes/complexSearch?apiKey=d051999aa4f04cbf8bda18878c42746f&query=${name}`
-        );
-        const recipes = await data.json();
-        localStorage.setItem(name, JSON.stringify(recipes.results));
-        setSearchedRecipes(recipes.results);
-        setLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      }
     }
   };
 

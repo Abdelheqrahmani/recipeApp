@@ -33,33 +33,4 @@ function Search({ onSearch }) {
   );
 }
 
-const FormStyle = styled.form`
-  margin: 0 auto;
-  margin-top: 50px;
-  div {
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  input {
-    border: none;
-    background: linear-gradient(35deg, #494949, #313131);
-    font-size: 1.5rem;
-    color: white;
-    padding: 1rem 3rem;
-    border: none;
-    border-radius: 1rem;
-    outline: none;
-    width: 100%;
-  }
-  svg {
-    position: absolute;
-    top: 40%;
-    left: 1rem;
-    transform: translateY(0, -50%);
-    color: white;
-  }
-`;
 export default Search;
