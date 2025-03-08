@@ -1,17 +1,18 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 
 function Search({ onSearch }) {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
   const submitHandler = (e) => {
     e.preventDefault();
-    navigate("searched/" + input);
-    onSearch();
+    if (input.trim()) {
+      navigate(`/searched/${input}`);
+      onSearch && onSearch();
+      setInput(""); // Clear input after search
+    }
   };
 
   return (

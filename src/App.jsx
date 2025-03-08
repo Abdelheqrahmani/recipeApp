@@ -7,12 +7,12 @@ import { Link } from "react-router-dom";
 import { GiKnifeFork } from "react-icons/gi";
 import { useEffect } from "react";
 import Main from "./components/Main";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className=" container mx-auto App ">
+    <div className="container mx-auto App">
       <Router>
-         
         <Pages />
       </Router>
     </div>
