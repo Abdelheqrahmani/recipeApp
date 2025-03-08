@@ -2,6 +2,7 @@ import Popular from "../components/Popular";
 import Veggie from "../components/Veggie";
 import {motion} from 'framer-motion'
 import Main from "../components/Main";
+import Category from "../components/Category";
 
 const Home = () => {
     return (  
@@ -12,7 +13,7 @@ const Home = () => {
         transition={{ duration: 0.5 }}
         > 
             <Main />
-            
+            <Category></Category>
             <Popular />
             <Veggie />
         </motion.div>
