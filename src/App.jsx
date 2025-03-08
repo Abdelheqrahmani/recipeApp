@@ -12,8 +12,7 @@ function App() {
   return (
     <div className=" container mx-auto App ">
       <Router>
-        <Main />
-        <Category />
+         
         <Pages />
       </Router>
     </div>

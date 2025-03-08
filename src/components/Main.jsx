@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import { GiKnifeFork  } from "react-icons/gi";
 import Search from "./Search";
 import Searched from "../pages/Searched";
+import { IoIosCloseCircle } from "react-icons/io";
+import { FaBars } from "react-icons/fa";
+
 
 function Main() {
   const searchedRef = useRef(null);
@@ -28,7 +31,7 @@ function Main() {
       <div className="w-full flex justify-between items-center h-16 px-6 bg-amber-50 shadow-xl relative z-20">
       
         <Link className="flex items-center text-white" to="/">
-          <p className="text-4xl text-orange-400 animate-bounce mt-1">Z</p>
+          <p className="text-4xl text-orange-400  mt-1">Z</p>
           <GiKnifeFork className="text-orange-400 animate-bounce text-3xl mt-3" />
         </Link>
 
@@ -45,9 +48,8 @@ function Main() {
           className="lg:hidden flex flex-col justify-between h-6 w-6 focus:outline-none"
           onClick={() => setIsOpen(true)}
         >
-          <span className="block w-full h-0.5 bg-black"></span>
-          <span className="block w-full h-0.5 bg-black"></span>
-          <span className="block w-full h-0.5 bg-black"></span>
+   <FaBars className="text-orange-400 text-3xl "  />
+
         </button>
       </div>
 
@@ -57,10 +59,10 @@ function Main() {
           onClick={() => setIsOpen(false)} // Close menu when clicking outside
         >
           <button
-            className="absolute top-6 right-6 text-4xl"
+            className="absolute top-6 right-6  text-4xl"
             onClick={() => setIsOpen(false)}
           >
-            ✖
+            <IoIosCloseCircle   className="text-orange-400 " />
           </button>
           <a
             className="hover:text-orange-400 cursor-pointer"

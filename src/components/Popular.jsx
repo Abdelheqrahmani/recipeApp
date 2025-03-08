@@ -38,8 +38,10 @@ function Popular() {
 
   return (
     <div>
-      <h1>Popular</h1>
-      <Splide  
+      <div className="w-full text-center py-2 bg-gradient-to-r from-orange-400/30 rounded-t-xl to-amber-600 text-white font-bold text-lg shadow-lg">
+        Popular
+      </div>
+      <Splide
         options={{
           perPage: 4,
           gap: "1.5rem",
@@ -47,36 +49,35 @@ function Popular() {
           arrows: false,
           autoplay: true,
           type: "loop",
-          interval: 3000, 
+          interval: 3000,
           speed: 1500,
           breakpoints: {
             1200: { perPage: 3 },
             768: { perPage: 2 },
             480: { perPage: 1, interval: 2000, speed: 1000 },
           },
+          accessibility: false,
         }}
+        className="bg-gradient-to-r from-orange-400/30 to-amber-600 rounded-b-lg w-full h-[400px] items-center"
       >
-     
         {popular.map((recipe) => (
           <SplideSlide key={recipe.id}>
-            <Link    to={"/recipe/" + recipe.id}>
-              <div className="container my-10 w-full  flex flex-col gap-0.5  justify-center 
-               items-start rounded-xl shadow-lg h-full ">
-                <img src={recipe.image} alt={recipe.title} />
-                <p className="w-full 
-                h-10 text-center"> {recipe.title}</p>
-                <p
-             className="text-gray-700 w-full h-20 overflow-hidden "
-                 dangerouslySetInnerHTML={{
-                __html: recipe.summary.length < 100
-                  ? recipe.summary
-                  : recipe.summary.substring(0, 100) + "..."
-            }}></p>
-            <div className="  w-full flex justify-start h-10 items-center gap-2">
-         <button className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-orange-400 rounded-lg hover:bg-orange-300 cursor-pointer "> Read More</button>
-             </div> </div>
+            <Link to={"/recipe/" + recipe.id}>
+              <div className="w-full h-[400px] flex flex-col bg-white/70  shadow-lg overflow-hidden transition-all hover:scale-105 hover:shadow-xl ">
+                {/* Image Section */}
+                <img
+                  className="w-full h-[180px] object-cover"
+                  src={recipe.image}
+                  alt={recipe.title}
+                />
+
+                <div className="p-4 flex flex-col gap-3 flex-grow">
+                  <h3 className="text-lg font-semibold text-gray-900 text-center">
+                    {recipe.title}
+                  </h3>
+                </div>
+              </div>
             </Link>
-          
           </SplideSlide>
         ))}
       </Splide>

@@ -1,112 +1,83 @@
 import React, { useEffect, useState } from "react";
-import styled from "styled-components";
-import { Splide, SplideSlide } from '@splidejs/react-splide';
-import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-import { div } from "framer-motion/client";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/dist/css/themes/splide-default.min.css";
 import { Link } from "react-router-dom";
 
 function Veggie() {
   const [veggie, setVeggie] = useState([]);
 
   useEffect(() => {
-      getVeggie();
+    getVeggie();
   }, []);
 
   const getVeggie = async () => {
-      const check = localStorage.getItem("veggie");
+    const check = localStorage.getItem("veggie");
 
-      if (check) {
-          setVeggie(JSON.parse(check));
-      } else {
-          try {
-              const api = await fetch(
-                  `https://api.spoonacular.com/recipes/random?apiKey=d051999aa4f04cbf8bda18878c42746f&number=9&vegetarian`
-              );
-              const data = await api.json();
-              
-              if (data.recipes) {
-                  localStorage.setItem("veggie", JSON.stringify(data.recipes)); // key  + value 
-                  setVeggie(data.recipes);
-                  console.log(data.recipes);
-              } else {
-                  console.error("No recipes found in the response:", data);
-              }
-          } catch (error) {
-              console.error("Error fetching popular recipes:", error);
-          }
+    if (check) {
+      setVeggie(JSON.parse(check));
+    } else {
+      try {
+        const api = await fetch(
+          `https://api.spoonacular.com/recipes/random?apiKey=d051999aa4f04cbf8bda18878c42746f&number=9&vegetarian=true`
+        );
+        const data = await api.json();
+
+        if (data.recipes) {
+          localStorage.setItem("veggie", JSON.stringify(data.recipes));
+          setVeggie(data.recipes);
+        } else {
+          console.error("No recipes found in the response:", data);
+        }
+      } catch (error) {
+        console.error("Error fetching vegetarian recipes:", error);
       }
+    }
   };
+
   return (
- <div>
-    <Wrapper>
-    <h3>Our Vegeterian Picks</h3>
-    <Splide options={{
-        perPage: 3,
-        arrows: false,
-        pagination: false,
-        drag: "free",
-        gap: "1rem"
-    }}>
+    <div className="w-full container mt-3">      <div className="w-full text-center py-2 bg-gradient-to-r from-green-400/30 rounded-t-xl to-emerald-600 text-white font-bold text-lg shadow-lg">
+        Our Vegetarian Picks
+      </div>
+      <Splide
+        options={{
+          perPage: 4,
+          gap: "1.5rem",
+          pagination: false,
+          arrows: false,
+          autoplay: true,
+          type: "loop",
+          interval: 3000,
+          speed: 1500,
+          breakpoints: {
+            1200: { perPage: 3 },
+            768: { perPage: 2 },
+            480: { perPage: 1, interval: 2000, speed: 1000 },
+          },
+          accessibility: false,
+        }}
+        className="bg-gradient-to-r from-green-400/30 to-emerald-600 rounded-b-lg w-full h-[400px] items-center"
+      >
         {veggie.map((recipe) => (
-            <SplideSlide key={recipe.id}>
-                <Card>
-                    <Link to={'/recipe/'+recipe.id}>
-                    <p>{recipe.title}</p>
-                    <img src={recipe.image} alt={recipe.title} />
-                    <Gradient/>
-                    </Link>
-                </Card>
-            </SplideSlide>
+          <SplideSlide key={recipe.id}>
+            <Link to={"/recipe/" + recipe.id}>
+              <div className="w-full h-[400px] flex flex-col bg-white/70 shadow-lg overflow-hidden transition-all hover:scale-105 hover:shadow-xl">
+                <img
+                  className="w-full h-[180px] object-cover"
+                  src={recipe.image}
+                  alt={recipe.title}
+                />
+                <div className="p-4 flex flex-col gap-3 flex-grow">
+                  <h3 className="text-lg font-semibold text-gray-900 text-center">
+                    {recipe.title}
+                  </h3>
+                </div>
+              </div>
+            </Link>
+          </SplideSlide>
         ))}
-    </Splide>
-</Wrapper>
-</div>
-  )
+      </Splide>
+    </div>
+  );
 }
-const Wrapper = styled.div`
-    margin: 4rem 0rem;
-`;
 
-const Card = styled.div`
-    min-height: 25rem;
-    border-radius: 2rem;
-    overflow: hidden;
-    text-align: center;
-    position: relative;
-
-    img {
-        border-radius: 2rem;
-        position: absolute;
-        left: 0; 
-        width: 100%; 
-        height: 100%;
-        object-fit: cover;
-    }
-
-    p { 
-        position: absolute; 
-        z-index: 10;
-        left: 50%;
-        bottom: 0;
-        transform: translateX(-50%); 
-        color: white;
-        width: 100%;
-        text-align: center;
-        font-weight: bold;
-        font-size: 1rem;
-        height: 40%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-`;
-
-const Gradient = styled.div`
-    z-index: 3;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.5)); /* Stronger gradient */
-`;
-
-export default Veggie
+export default Veggie;

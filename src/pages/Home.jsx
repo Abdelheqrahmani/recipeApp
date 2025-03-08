@@ -1,6 +1,7 @@
 import Popular from "../components/Popular";
 import Veggie from "../components/Veggie";
 import {motion} from 'framer-motion'
+import Main from "../components/Main";
 
 const Home = () => {
     return (  
@@ -9,7 +10,8 @@ const Home = () => {
         initial={{ opacity: 0 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-        >
+        > 
+            <Main />
             
             <Popular />
             <Veggie />

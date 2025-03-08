@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, useParams } from 'react-router-dom';
+import Main from '../components/Main';
 
 function Searched() {
     let params = useParams();
@@ -37,7 +38,8 @@ function Searched() {
     }
 
     return (
-        <div className='grid grid-cols-3 max-sm:grid-cols-1 gap-4'>
+        <div className='container mx-auto'>
+            <Main/>
             {searchedRecipes.length === 0 && params.search ? (
       <div style={{ textAlign: "center", fontSize: "1.5rem", color: "red", marginTop: "20px" }}>
         No recipes found.
